@@ -27,6 +27,6 @@ int ec_save(EC_KEY *key, char const *folder)
 	file_ptr = fopen(priv_path, "w+");
 	PEM_write_ECPrivateKey(file_ptr, key, NULL, NULL, 0, NULL, NULL);
 	fclose(file_ptr);
-	
+
 	return (1);
 }
