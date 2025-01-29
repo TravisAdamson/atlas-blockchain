@@ -22,7 +22,7 @@ uint8_t *ec_to_pub(EC_KEY const *key, uint8_t pub[EC_PUB_LEN])
 		return (NULL);
 
 	EC_POINT_point2oct(group, point, form, pub, EC_PUB_LEN, NULL);
-	
+
 	if (pub)
 		return (pub);
 	else
