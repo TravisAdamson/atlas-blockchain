@@ -14,8 +14,10 @@ int ec_save(EC_KEY *key, char const *folder)
 
 	if (!key || !folder)
 		return (0);
+
 	if (stat(folder, &info) || !S_ISDIR(info.st_mode))
 		mkdir(folder, 0755);
+
 	memcpy(pub_path, folder, strlen(folder));
 	memcpy(&pub_path[strlen(folder)], "/key_pub.pem", 12);
 	memcpy(priv_path, folder, strlen(folder));
@@ -25,5 +27,6 @@ int ec_save(EC_KEY *key, char const *folder)
 	file_ptr = fopen(priv_path, "w+");
 	PEM_write_ECPrivateKey(file_ptr, key, NULL, NULL, 0, NULL, NULL);
 	fclose(file_ptr);
+	
 	return (1);
 }

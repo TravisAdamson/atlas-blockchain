@@ -14,12 +14,15 @@ uint8_t *ec_to_pub(EC_KEY const *key, uint8_t pub[EC_PUB_LEN])
 
 	if (!key)
 		return (NULL);
+
 	point = EC_KEY_get0_public_key(key);
 	group = EC_KEY_get0_group(key);
 	form = EC_KEY_get_conv_form(key);
 	if (!point || !group || !form)
 		return (NULL);
+
 	EC_POINT_point2oct(group, point, form, pub, EC_PUB_LEN, NULL);
+	
 	if (pub)
 		return (pub);
 	else
