@@ -9,7 +9,7 @@
  * Return: pointer to sig or NULL
  */
 uint8_t *ec_sign(EC_KEY const *key, uint8_t const *msg, size_t msglen,
-				 sig_data_t *sig)
+				 sig_t *sig)
 {
 	if (!key || !msg)
 		return (NULL);
