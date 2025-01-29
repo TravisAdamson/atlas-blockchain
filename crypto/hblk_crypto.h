@@ -26,7 +26,7 @@
 
 /**
  * struct sig_s - Struct holding the EC Signature data
- * 
+ *
  * @sig: buffer to hold the signature, may not be fully used
  * @len: The size of the given signature, with SIG_MAX_LEN being the max
  */
