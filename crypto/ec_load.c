@@ -19,7 +19,7 @@ EC_KEY *ec_load(char const *folder)
 		return (NULL);
 
 	key = EC_KEY_new_by_curve_name(EC_CURVE);
-	
+
 	if (!key)
 		return (NULL);
 
@@ -37,7 +37,7 @@ EC_KEY *ec_load(char const *folder)
 	file_pointer = fopen(priv_path, "r");
 	if (!file_pointer)
 		return (NULL);
-		
+
 	PEM_read_ECPrivateKey(file_pointer, &key, NULL, NULL), fclose(file_pointer);
 
 	return (key);
