@@ -12,8 +12,6 @@
 #include <string.h>
 #include <time.h>
 
-/* Macros */
-
 #define GENESIS_BLK_HASH 00000000000000000000000000000000
 #define BLOCKCHAIN_DATA_MAX 1024
 #define SHA256_DIGEST_LENGTH 32
@@ -24,9 +22,6 @@
 #define VERS "\x30\x2e\x31"
 #define END ((_get_endianness() == 1) ? "\x01" : "\x02")
 #define FHEADER "\x48\x42\x4c\x4b\x30\x2e\x31"
-
-
-/* Structs */
 
 /**
  * struct blockchain_s - Blockchain structure
@@ -90,7 +85,7 @@ void blockchain_destroy(blockchain_t *blockchain);
 uint8_t *block_hash(block_t const *block,
 					uint8_t hash_buf[SHA256_DIGEST_LENGTH]);
 int blockchain_serialize(blockchain_t const *blockchain, char const *path);
-int write_blocks(llist_node_t list, unsigned int index, void *arg);
+int write_each(llist_node_t list, unsigned int index, void *arg);
 blockchain_t *blockchain_deserialize(char const *path);
 int block_is_valid(block_t const *block, block_t const *prev_block);
 

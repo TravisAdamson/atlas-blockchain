@@ -19,19 +19,19 @@ int blockchain_serialize(blockchain_t const *blockchain, char const *path)
 	memcpy(&header[8], &blocknums, 4);
 	f_ptr = fopen(path, "w");
 	fwrite(header, 1, 12, f_ptr);
-	llist_for_each(blockchain->chain, write_blocks, f_ptr);
+	llist_for_each(blockchain->chain, write_each, f_ptr);
 	fclose(f_ptr);
 	return (1);
 }
 
 /**
- * write_blocks - function to write blocks to file
+ * write_each - function to write blocks to file
  * @list: node to perform function on
  * @index: unused
  * @arg: filestream pointer
  * Return: 0
  */
-int write_blocks(llist_node_t list, unsigned int index, void *arg)
+int write_each(llist_node_t list, unsigned int index, void *arg)
 {
 	block_t *temp = NULL;
 	char block_buff[1116];
