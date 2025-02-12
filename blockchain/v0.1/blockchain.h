@@ -88,5 +88,6 @@ int blockchain_serialize(blockchain_t const *blockchain, char const *path);
 int write_each(llist_node_t list, unsigned int index, void *arg);
 blockchain_t *blockchain_deserialize(char const *path);
 int block_is_valid(block_t const *block, block_t const *prev_block);
+int genesis_blk(block_t const *block);
 
 #endif
