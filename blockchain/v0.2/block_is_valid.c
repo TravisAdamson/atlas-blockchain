@@ -27,21 +27,18 @@ int block_is_valid(block_t const *block, block_t const *prev_block)
 
 	if (block->info.index != prev_block->info.index + 1)
 		return (1);
-
 	block_hash(prev_block, prev_hash);
 	if (memcmp(prev_hash, prev_block->hash, 32))
 		return (1);
-
 	if (memcmp(prev_block->hash, block->info.prev_hash, 32))
 		return (1);
-
 	block_hash(block, current_hash);
 	if (memcmp(current_hash, block->hash, 32))
 		return (1);
-
 	if (block->data.len > BLOCKCHAIN_DATA_MAX)
 		return (0);
-
+	if (!hash_matches_difficulty(block->hash, block->info.difficulty))
+		return (1);
 	return (0);
 }
 
