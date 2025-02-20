@@ -22,6 +22,12 @@
 #define VERS "\x30\x2e\x31"
 #define END ((_get_endianness() == 1) ? "\x01" : "\x02")
 #define FHEADER "\x48\x42\x4c\x4b\x30\x2e\x31"
+#define BLOCK_GENERATION_INTERVAL 1
+#define DIFF_ADJUSTMENT_INTERVAL 5
+#define DIFF block->info.difficulty
+#define EXP(x, y) \
+	((x->info.index - y->info.index) * BLOCK_GENERATION_INTERVAL)
+#define ACT(x, y) (x->info.timestamp - y->info.timestamp)
 
 /**
  * struct blockchain_s - Blockchain structure
@@ -93,5 +99,6 @@ int genesis_blk(block_t const *block);
 int hash_matches_difficulty(uint8_t const hash[SHA256_DIGEST_LENGTH],
 	uint32_t difficulty);
 void block_mine(block_t *block);
+uint32_t blockchain_difficulty(blockchain_t const *blockchain);
 
 #endif
