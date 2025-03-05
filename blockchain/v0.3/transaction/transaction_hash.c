@@ -27,7 +27,7 @@ uint8_t *transaction_hash(
 /**
  * hash_in - reads inputs into a buffer for hashing
  * @input: node in list
- * @iter: Iteration index in list
+ * @i: index in list
  * @buff: Buffer to read into
  * Return: returns 0 on success, 1 on fail
  */
@@ -43,7 +43,7 @@ int hash_in(llist_node_t input, unsigned int i, void *buff)
 /**
  * hash_out - reads outputs into a buffer for hashing
  * @output: node out list
- * @iter: Iteration index out list
+ * @i: index out list
  * @buff: Buffer to read into
  * Return: returns 0 on success, 1 on fail
  */
