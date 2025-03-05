@@ -15,7 +15,7 @@
 /* Macros */
 #define COINBASE_AMOUNT 50
 #define BLOCKCHAIN_DATA_MAX 1024
-#define BUFF_SIZE ((32 * 3 * ins) + (32 * outs))
+#define BUFF_SIZE ((32 * 3 * tot_ins) + (32 * tot_outs))
 #define PTR_MOVE (sizeof(uint32_t) + EC_PUB_LEN)
 #define UNSPENT ((uto_t *)unspent)
 #define CONTEXT ((tc_t *)context)
@@ -133,6 +133,8 @@ uto_t *unspent_tx_out_create(
 ti_t *tx_in_create(uto_t const *unspent);
 uint8_t *transaction_hash(
 	transaction_t const *transaction, uint8_t hash_buf[SHA256_DIGEST_LENGTH]);
+int hash_in(llist_node_t input, unsigned int i, void *buff);
+int hash_out(llist_node_t output, unsigned int i, void *buff);
 sig_t *tx_in_sign(
 	ti_t *in, uint8_t const tx_id[SHA256_DIGEST_LENGTH], EC_KEY const *sender,
 	llist_t *all_unspent);
