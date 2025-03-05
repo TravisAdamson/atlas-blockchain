@@ -2,6 +2,7 @@
 #define _BLOCKCHAIN_H_
 
 #include "provided/endianness.h"
+#include "transaction/transaction.h"
 #include <openssl/sha.h>
 #include <llist.h>
 #include <sys/stat.h>
