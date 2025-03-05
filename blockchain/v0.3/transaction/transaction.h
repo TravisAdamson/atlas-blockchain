@@ -138,6 +138,7 @@ int hash_out(llist_node_t output, unsigned int i, void *buff);
 sig_t *tx_in_sign(
 	ti_t *in, uint8_t const tx_id[SHA256_DIGEST_LENGTH], EC_KEY const *sender,
 	llist_t *all_unspent);
+int check_hash(llist_node_t out, void *hash);
 transaction_t *transaction_create(
 	EC_KEY const *sender, EC_KEY const *receiver, uint32_t amount,
 	llist_t *all_unspent);
