@@ -33,10 +33,12 @@
  * struct blockchain_s - Blockchain structure
  *
  * @chain: Linked list of pointers to block_t objects
+ * @unspent: Linked list of the transaction outputs that are unspent
  */
 typedef struct blockchain_s
 {
 	llist_t     *chain;
+	llist_t		*unspent;
 } blockchain_t;
 
 /**
@@ -80,6 +82,7 @@ typedef struct block_s
 {
 	block_info_t    info;
 	block_data_t    data;
+	llist_t		*transactions;
 	uint8_t     hash[SHA256_DIGEST_LENGTH];
 } block_t;
 
