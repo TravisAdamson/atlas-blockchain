@@ -147,6 +147,9 @@ int send_tx(uint32_t amount, tc_t *context, EC_KEY const *receiver);
 int sign_txi(llist_node_t tx_in, unsigned int i, void *context);
 int transaction_is_valid(
 	transaction_t const *transaction, llist_t *all_unspent);
+int verify_hash(uto_t *unspent, tx_in_t *in);
+int valid_txi(tx_in_t *in, uint32_t i, tv_t *context);
+int get_txo_amount(tx_out_t *out, unsigned int i, tv_t *context);
 transaction_t *coinbase_create(
 	EC_KEY const *receiver, uint32_t block_index);
 int coinbase_is_valid(
