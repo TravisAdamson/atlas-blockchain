@@ -15,7 +15,7 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 	block_data_t new_data = {{0}, 0};
 	uint32_t len = data_len;
 
-	new_block = malloc(sizeof(block_t));
+	new_block = calloc(1, sizeof(block_t));
 	if (!new_block)
 		return (NULL);
 	if (data_len > BLOCKCHAIN_DATA_MAX)
