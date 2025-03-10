@@ -44,11 +44,13 @@ transaction_t *transaction_create(
 /**
  * find_a_match - Searches unspent list for matches
  * @unspent: unspent tx
+ * @i: iterator needed for llist functions
  * @context: struct holding needed info
  * Return: 0 on success or 1 on fail
  */
-int find_a_match(llist_node_t unspent, void *context)
+int find_a_match(llist_node_t unspent, unsigned int i, void *context)
 {
+	(void)i;
 	ti_t *new_txi;
 
 	if (CONTEXT->needed <= 0 || !unspent)
@@ -95,11 +97,14 @@ int send_tx(uint32_t amount, tc_t *context, EC_KEY const *receiver)
 /**
  * sign_txi - signs input tx
  * @tx_in: Transaction inputs list
+ * @i: Iterator needed for the llist functions
  * @context: struct holding needed info
  * Return: 0 on success, 1 on fail
  */
-int sign_txi(llist_node_t tx_in, void *context)
+int sign_txi(llist_node_t tx_in, unsigned int i, void *context)
 {
+	(void)i;
+
 	if (!tx_in)
 		return (1);
 	tx_in_sign(
