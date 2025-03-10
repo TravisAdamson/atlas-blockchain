@@ -50,7 +50,7 @@ typedef struct tx_out_s
 
 /**
  * struct tx_in_s - Transaction input
- * 
+ *
  * @block_hash:  Hash of the Block containing the transaction @tx_id
  * @tx_id:       ID of the transaction containing @tx_out_hash
  * @tx_out_hash: Hash of the referenced transaction output
@@ -66,7 +66,7 @@ typedef struct tx_in_s
 
 /**
  * struct unspent_tx_out_s - Unspent transaction output
- * 
+ *
  * @block_hash: Hash of the Block containing the transaction @tx_id
  * @tx_id:      ID of the transaction containing @out
  * @out:        Copy of the referenced transaction output
@@ -142,6 +142,9 @@ int check_hash(llist_node_t out, void *hash);
 transaction_t *transaction_create(
 	EC_KEY const *sender, EC_KEY const *receiver, uint32_t amount,
 	llist_t *all_unspent);
+int find_a_match(llist_node_t unspent, void *context);
+int send_tx(uint32_t amount, tc_t *context, EC_KEY const *receiver);
+int sign_txi(llist_node_t tx_in, void *context);
 int transaction_is_valid(
 	transaction_t const *transaction, llist_t *all_unspent);
 transaction_t *coinbase_create(
