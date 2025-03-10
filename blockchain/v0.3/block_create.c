@@ -28,7 +28,7 @@ block_t *block_create(block_t const *prev, int8_t const *data,
 	memcpy(info.prev_hash, prev->hash, 32);
 	info.timestamp = time(NULL);
 
-	memset(new_block->hash, 0, 32);
 	new_block->data = new_data, new_block->info = info;
+	new_block->transactions = llist_create(MT_SUPPORT_FALSE);
 	return (new_block);
 }
