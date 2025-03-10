@@ -33,6 +33,6 @@ transaction_t *coinbase_create(
 	memcpy(txi->tx_out_hash, &block_index, sizeof(uint32_t));
 	llist_add_node(new_cbtx->inputs, txi, ADD_NODE_REAR);
 	llist_add_node(new_cbtx->outputs, txo, ADD_NODE_REAR);
-	transaction_hash(new, new_cbtx->id);
-	return (new);
+	transaction_hash(new_cbtx, new_cbtx->id);
+	return (new_cbtx);
 }
