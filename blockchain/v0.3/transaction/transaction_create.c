@@ -29,14 +29,14 @@ transaction_t *transaction_create(
 	memcpy(context->pub, pub_key, EC_PUB_LEN);
 	context->needed = (int)amount, context->sender = sender;
 	this_tx->inputs = llist_create(MT_SUPPORT_FALSE);
-	llist_for_each(all_unspent, find_matches, context);
+	llist_for_each(all_unspent, find_a_match, context);
 	if (context->needed > 0)
 		return (free(this_tx), NULL);
 	this_tx->outputs = llist_create(MT_SUPPORT_FALSE);
 	if (!send_tx(amount, context, receiver))
 		return (free(this_tx), NULL);
 	transaction_hash(this_tx, this_tx->id);
-	llist_for_each(this_tx->inputs, sig_ins, context);
+	llist_for_each(this_tx->inputs, sign_txi, context);
 	free(context);
 	return (this_tx);
 }
