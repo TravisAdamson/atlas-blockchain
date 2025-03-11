@@ -94,6 +94,7 @@ void block_destroy(block_t *block);
 void blockchain_destroy(blockchain_t *blockchain);
 uint8_t *block_hash(block_t const *block,
 					uint8_t hash_buf[SHA256_DIGEST_LENGTH]);
+int dup_tx_id(llist_node_t tx, unsigned int i, void *buffer);
 int blockchain_serialize(blockchain_t const *blockchain, char const *path);
 int write_each(llist_node_t list, unsigned int index, void *arg);
 blockchain_t *blockchain_deserialize(char const *path);
