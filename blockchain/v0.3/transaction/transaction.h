@@ -158,5 +158,9 @@ void transaction_destroy(transaction_t *transaction);
 llist_t *update_unspent(
 	llist_t *transactions, uint8_t block_hash[SHA256_DIGEST_LENGTH],
 	llist_t *all_unspent);
+int sep_txi_txo(transaction_t *tx, unsigned int i, ul_t *context);
+int check_out(ti_t *in, unsigned int i, ul_t *context);
+int get_out(uto_t *unspent, tx_in_t *in);
+int update_out(to_t *out, unsigned int i, ul_t *context);
 
 #endif
