@@ -53,7 +53,7 @@ int write_block(block_t *block, unsigned int i, FILE *f_ptr)
 	memcpy(&block_buff[60], block->data.buffer, len);
 	memcpy(&block_buff[60 + len], block->hash, 32);
 	memcpy(&block_buff[92 + len], &tx_size, 4);
-	fwrite(block_buff, 1, 92 + len, f_ptr);
+	fwrite(block_buff, 1, 96 + len, f_ptr);
 	if (tx_size > 0)
 		llist_for_each(block->transactions, (node_func_t)*write_tx, f_ptr);
 	return (0);
