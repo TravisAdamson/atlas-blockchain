@@ -98,9 +98,10 @@ int dup_tx_id(llist_node_t tx, unsigned int i, void *buffer);
 int blockchain_serialize(blockchain_t const *blockchain, char const *path);
 int write_each(llist_node_t list, unsigned int index, void *arg);
 blockchain_t *blockchain_deserialize(char const *path);
-int block_is_valid(block_t const *block, block_t const *prev_block);
+int block_is_valid(block_t const *block, block_t const *prev_block,
+				   llist_t *all_unspent);
 int genesis_blk(block_t const *block);
-
+int all_tx(transaction_t *tx, unsigned int i, llist_t *unspent);
 int hash_matches_difficulty(uint8_t const hash[SHA256_DIGEST_LENGTH],
 	uint32_t difficulty);
 void block_mine(block_t *block);
