@@ -34,7 +34,7 @@ blockchain_t *blockchain_deserialize(char const *path)
 		fread(&(block->data.len), sizeof(uint8_t), 4, f_ptr);
 		fread(&block->data.buffer, sizeof(uint8_t), block->data.len, f_ptr);
 		fread(&block->hash, sizeof(uint8_t), SHA256_DIGEST_LENGTH, f_ptr);
-		fread($total_tx, 4, 1, f_ptr);
+		fread(&total_tx, 4, 1, f_ptr);
 		if ((int)total_tx != -1)
 		{
 			block->transactions = llist_create(MT_SUPPORT_FALSE);
