@@ -96,7 +96,11 @@ uint8_t *block_hash(block_t const *block,
 					uint8_t hash_buf[SHA256_DIGEST_LENGTH]);
 int dup_tx_id(llist_node_t tx, unsigned int i, void *buffer);
 int blockchain_serialize(blockchain_t const *blockchain, char const *path);
-int write_each(llist_node_t list, unsigned int index, void *arg);
+int write_block(block_t *block, unsigned int i, FILE *f_ptr);
+int write_tx(transaction_t *tx, unsigned int i, FILE *f_ptr);
+int write_txi(ti_t *in, unsigned int i, FILE *f_ptr);
+int write_txo(to_t *out, unsigned int i, FILE *f_ptr);
+int write_txu(uto_t *unspent, unsigned int i, FILE *f_ptr);
 blockchain_t *blockchain_deserialize(char const *path);
 int block_is_valid(block_t const *block, block_t const *prev_block,
 				   llist_t *all_unspent);
