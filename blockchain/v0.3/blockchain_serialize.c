@@ -1,5 +1,7 @@
 #include "blockchain.h"
 
+int write_txu(uto_t *unspent, unsigned int i, FILE *f_ptr);
+
 /**
  * blockchain_serialize - saves a blockchain to file
  * @blockchain: chain to save

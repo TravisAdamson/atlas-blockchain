@@ -1,7 +1,5 @@
 #include "blockchain.h"
 
-int read_txu(FILE *f_ptr, blockchain_t *chain, uint32_t total_txu);
-
 /**
  * blockchain_deserialize - Loads the blockchain from a given file
  * @path: file to read from
