@@ -129,8 +129,8 @@ int write_txo(to_t *out, unsigned int i, FILE *f_ptr)
 /**
  * write_txu - writes unspent outputs to file
  * @unspent: unspent to write
- * @index: unsused
- * @fptr: file pointer
+ * @i: unsused
+ * @f_ptr: file pointer
  * Return: 0
  */
 int write_txu(uto_t *unspent, unsigned int i, FILE *f_ptr)
