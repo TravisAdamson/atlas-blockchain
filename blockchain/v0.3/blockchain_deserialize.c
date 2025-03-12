@@ -134,16 +134,16 @@ int read_txo(FILE *f_ptr, uint32_t total_txo, llist_t *tx_out)
 /**
  * read_txu - Reads unspent outputs from file
  * @f_ptr: file pointer
- * @blockchain: blockchain to add list to
+ * @chain: blockchain to add list to
  * @total_txu: number of unspent tx
  * Return: 1
  */
-int read_txu(FILE *f_ptr, blockchain_t *blockchain, uint32_t total_txu)
+int read_txu(FILE *f_ptr, blockchain_t *chain, uint32_t total_txu)
 {
 	uto_t *unspent;
 	uint32_t i = 0;
 
-	blockchain->unspent = llist_create(MT_SUPPORT_FALSE);
+	chain->unspent = llist_create(MT_SUPPORT_FALSE);
 	if (!total_txu)
 		return (1);
 
@@ -155,7 +155,7 @@ int read_txu(FILE *f_ptr, blockchain_t *blockchain, uint32_t total_txu)
 		fread(&unspent->out.amount, 4, 1, f_ptr);
 		fread(unspent->out.pub, 65, 1, f_ptr);
 		fread(unspent->out.hash, 32, 1, f_ptr);
-		llist_add_node(blockchain->unspent, unspent, ADD_NODE_REAR);
+		llist_add_node(chain->unspent, unspent, ADD_NODE_REAR);
 	}
 
 	return (1);
