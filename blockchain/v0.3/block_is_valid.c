@@ -4,6 +4,7 @@
  * block_is_valid - Validates the given block
  * @block: block to validate
  * @prev_block: block before block to validate
+ * @all_unspent: List of the unspent transactions
  * Return: 0 on Success, 1 on fail
  */
 int block_is_valid(block_t const *block, block_t const *prev_block,
