@@ -22,7 +22,7 @@
 #define MAGIC_NUMS "\x48\x42\x4c\x4b"
 #define VERS "\x30\x2e\x31"
 #define END ((_get_endianness() == 1) ? "\x01" : "\x02")
-#define FHEADER "\x48\x42\x4c\x4b\x30\x2e\x31"
+#define FHEADER "\x48\x42\x4c\x4b\x30\x2e\x33"
 #define BLOCK_GENERATION_INTERVAL 1
 #define DIFF_ADJUSTMENT_INTERVAL 5
 #define DIFF block->info.difficulty
