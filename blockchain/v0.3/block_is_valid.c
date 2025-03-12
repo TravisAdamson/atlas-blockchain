@@ -54,7 +54,7 @@ int genesis_blk(block_t const *block)
 {
 	block_t genesis = {
 		{0, 0, 1537578000, 0, {0}},
-		{"Holberton School", 16},
+		{"Holberton School", 16}, 0,
 		ATLAS_HASH};
 
 	return (memcmp(&genesis, block, 1116));
