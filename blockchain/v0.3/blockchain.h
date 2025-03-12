@@ -105,7 +105,6 @@ blockchain_t *blockchain_deserialize(char const *path);
 int read_tx(FILE *f_ptr, uint32_t total_tx, llist_t *tx_list);
 int read_txi(FILE *f_ptr, uint32_t total_txi, llist_t *tx_in);
 int read_txo(FILE *f_ptr, uint32_t total_txo, llist_t *tx_out);
-int read_txu(FILE *f_ptr, blockchain_t *chain, uint32_t total_txu);
 int block_is_valid(block_t const *block, block_t const *prev_block,
 				   llist_t *all_unspent);
 int genesis_blk(block_t const *block);
