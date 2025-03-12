@@ -41,6 +41,7 @@ int block_is_valid(block_t const *block, block_t const *prev_block,
 	if (!hash_matches_difficulty(block->hash, block->info.difficulty))
 		return (1);
 	if (llist_for_each(block->transactions, (node_func_t)&all_tx, all_unspent))
+		return (1);
 	return (0);
 }
 
